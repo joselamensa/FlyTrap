@@ -100,7 +100,7 @@ h1, h2, h3, h4 {
 /* Hero Section (mejoras) */
 .hero {
     height: 70vh;
-    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7)), url('../imgs/backgrounds/Banner1pcEcoflytrap.svg') center/cover no-repeat;
+    background: url('../imgs/backgrounds/Banner1pcEcoflytrap.svg') center/cover no-repeat;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -505,7 +505,7 @@ textarea.form-control {
     
     .hero {
         height: 40vh;
-        background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7)), url('../imgs/backgrounds/Banner1mobileecoflytrap.svg') center/cover no-repeat;
+        background: url('../imgs/backgrounds/Banner1mobileecoflytrap.svg') center/cover no-repeat;
         margin: 0;
         padding: 0;
         position: relative;

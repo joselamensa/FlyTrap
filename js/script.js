@@ -131,6 +131,9 @@ document.addEventListener("DOMContentLoaded", function () {
     
     // Configurar funcionalidad de expandir/contraer texto en mobile
     setupExpandableText();
+    
+    // Configurar botones de "Más información" de la sección quien-soy
+    setupProductInfoButtons();
 });
 
 // Función para configurar los botones de WhatsApp con mensajes personalizados
@@ -213,5 +216,44 @@ function setupExpandableText() {
                 }
             }
         });
+    });
+}
+
+// Función para configurar los botones de "Más información" de productos
+function setupProductInfoButtons() {
+    // Obtener todos los botones de "Más información" en la sección quien-soy
+    const productButtons = document.querySelectorAll('#quien-soy .btn-gold');
+    
+    productButtons.forEach((button, index) => {
+        // Eliminar eventos anteriores para evitar duplicados
+        if (button.clickHandler) {
+            button.removeEventListener('click', button.clickHandler);
+        }
+        
+        // Crear un nuevo manejador de eventos
+        button.clickHandler = function(e) {
+            e.preventDefault();
+            
+            let message;
+            
+            // Determinar qué mensaje usar según el índice del botón
+            // index 0 = Equipo Elegante Negro (primera tarjeta)
+            // index 1 = Equipo Industrial Blanco (segunda tarjeta)
+            if (index === 0) {
+                message = 'Hola, quiero más información sobre el Equipo Elegante Negro.';
+            } else if (index === 1) {
+                message = 'Hola, quiero más información sobre el Equipo Industrial Blanco.';
+            } else {
+                message = 'Hola, quiero más información.';
+            }
+            
+            const encodedMessage = encodeURIComponent(message);
+            
+            // Abrir WhatsApp con el mensaje personalizado
+            window.open(`https://wa.me/5491136267653?text=${encodedMessage}`, '_blank');
+        };
+        
+        // Agregar el nuevo manejador de eventos
+        button.addEventListener('click', button.clickHandler);
     });
 }
