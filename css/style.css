@@ -155,9 +155,60 @@ h1, h2, h3, h4 {
     margin-bottom: 2rem;
 }
 
+#quien-soy .row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#quien-soy .row > [class*="col-"] {
+    display: flex;
+}
+
+#quien-soy .card {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+#quien-soy .card-img-top {
+    flex-shrink: 0;
+}
+
+#quien-soy .card-body {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+#quien-soy .card-body h3 {
+    min-height: 3rem;
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+#quien-soy .card-body p.lead {
+    flex-grow: 1;
+    margin-bottom: 1.5rem;
+}
+
+#quien-soy .card-body .btn-gold {
+    margin-top: auto;
+    align-self: flex-start;
+}
+
 
 
 /* Experiencias Cards - Efecto "De otro planeta" */
+#actividades .row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#actividades .row > [class*="col-"] {
+    display: flex;
+}
+
 .experience-card {
     background: #1c1c1c;
     border-radius: 15px;
@@ -165,9 +216,13 @@ h1, h2, h3, h4 {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     position: relative;
-    height: 50vh;
+    height: 100%;
+    min-height: 60vh;
     perspective: 1000px;
     transform-style: preserve-3d;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 }
 
 .card-image {
@@ -193,17 +248,29 @@ h1, h2, h3, h4 {
     position: relative;
     z-index: 1;
     transition: all 0.5s ease;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
 }
 
 .experience-card h3 {
     font-size: 1.5rem;
     margin-bottom: 15px;
     color: #58802C;
+    min-height: 2.5rem;
+    display: flex;
+    align-items: center;
 }
 
 .experience-card p {
     margin-bottom: 20px;
     color: #ccc;
+    flex-grow: 1;
+}
+
+.experience-card .btn-gold {
+    margin-top: auto;
+    align-self: flex-start;
 }
 
 .card-hover-content {
@@ -390,7 +457,16 @@ textarea.form-control {
     }
     
     .experience-card {
+        min-height: auto;
         height: auto;
+    }
+    
+    .card-content {
+        flex-grow: 0;
+    }
+    
+    .experience-card p {
+        flex-grow: 0;
     }
     
     .card-hover-content {
