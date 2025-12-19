@@ -165,7 +165,7 @@ h1, h2, h3, h4 {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     position: relative;
-    height: 75vh;
+    height: 50vh;
     perspective: 1000px;
     transform-style: preserve-3d;
 }
