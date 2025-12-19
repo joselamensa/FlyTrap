@@ -176,7 +176,7 @@ function setupWhatsAppButtons() {
             const encodedMessage = encodeURIComponent(message);
             
             // Abrir WhatsApp con el mensaje personalizado
-            window.open(`https://wa.me/+5491131977801?text=${encodedMessage}`, '_blank');
+            window.open(`https://wa.me/5491136267653?text=${encodedMessage}`, '_blank');
         };
         
         // Agregar el nuevo manejador de eventos
