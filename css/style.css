@@ -187,9 +187,13 @@ h1, h2, h3, h4 {
     margin-bottom: 1rem;
 }
 
-#quien-soy .card-body p.lead {
+#quien-soy .card-body .expandable-text-wrapper {
     flex-grow: 1;
     margin-bottom: 1.5rem;
+}
+
+#quien-soy .card-body p.lead {
+    margin-bottom: 0;
 }
 
 #quien-soy .card-body .btn-gold {
@@ -197,7 +201,73 @@ h1, h2, h3, h4 {
     align-self: flex-start;
 }
 
+/* Estilos para texto expandible en mobile */
+.expandable-text-wrapper {
+    position: relative;
+}
 
+.expandable-text {
+    transition: max-height 0.4s ease-out, opacity 0.3s ease;
+    overflow: hidden;
+}
+
+.btn-expand-mobile {
+    background: transparent;
+    border: 1px solid #58802C;
+    color: #58802C;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.btn-expand-mobile:hover {
+    background: rgba(88, 128, 44, 0.1);
+    border-color: #58802C;
+    color: #58802C;
+    transform: translateY(-2px);
+}
+
+.btn-expand-mobile:active {
+    transform: translateY(0);
+}
+
+/* En desktop, el texto siempre está expandido */
+@media (min-width: 768px) {
+    .expandable-text {
+        max-height: none !important;
+        -webkit-line-clamp: unset !important;
+    }
+    
+    .btn-expand-mobile {
+        display: none !important;
+    }
+}
+
+/* En mobile, truncar el texto inicialmente */
+@media (max-width: 767.98px) {
+    .expandable-text {
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+        max-height: calc(1.6em * 4);
+        line-height: 1.6;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    
+    .expandable-text.expanded {
+        -webkit-line-clamp: unset;
+        max-height: none;
+        display: block;
+    }
+}
 
 /* Experiencias Cards - Efecto "De otro planeta" */
 #actividades .row {

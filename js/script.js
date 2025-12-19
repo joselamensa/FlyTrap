@@ -128,6 +128,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Configurar los botones de reserva para abrir WhatsApp con mensajes personalizados
     setupWhatsAppButtons();
+    
+    // Configurar funcionalidad de expandir/contraer texto en mobile
+    setupExpandableText();
 });
 
 // Función para configurar los botones de WhatsApp con mensajes personalizados
@@ -181,5 +184,34 @@ function setupWhatsAppButtons() {
         
         // Agregar el nuevo manejador de eventos
         link.addEventListener('click', link.clickHandler);
+    });
+}
+
+// Función para configurar el texto expandible en mobile
+function setupExpandableText() {
+    const expandButtons = document.querySelectorAll('.btn-expand-mobile');
+    
+    expandButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const textElement = this.previousElementSibling;
+            const expandText = this.querySelector('.expand-text');
+            const collapseText = this.querySelector('.collapse-text');
+            
+            if (textElement && textElement.classList.contains('expandable-text')) {
+                const isExpanded = textElement.classList.contains('expanded');
+                
+                if (isExpanded) {
+                    // Contraer texto
+                    textElement.classList.remove('expanded');
+                    expandText.style.display = 'inline';
+                    collapseText.style.display = 'none';
+                } else {
+                    // Expandir texto
+                    textElement.classList.add('expanded');
+                    expandText.style.display = 'none';
+                    collapseText.style.display = 'inline';
+                }
+            }
+        });
     });
 }
