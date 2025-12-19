@@ -50,7 +50,6 @@ h1, h2, h3, h4 {
 
 .navbar.scrolled {
     padding: 15px 50px;
-    background: rgba(0, 0, 0, 0.95) !important;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
 }
 .nav-link {
