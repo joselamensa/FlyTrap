@@ -769,17 +769,37 @@ textarea.form-control {
     max-width: 90px;
 }
 
-@media (max-width: 480px) {
+/* Mobile: carrusel deslizante — 3 íconos visibles */
+@media (max-width: 767px) {
+    .benefits-strip {
+        padding: 10px 0;
+        overflow: hidden;
+    }
+    .benefits-strip .container {
+        padding-left: 0;
+        padding-right: 0;
+        max-width: 100%;
+    }
+    .benefits-row {
+        flex-wrap: nowrap;
+        gap: 0;
+        justify-content: flex-start;
+        /* transition inyectada por JS para poder quitarla en el reset */
+    }
     .benefit-item {
-        flex: 0 0 calc(33.33% - 8px);
+        flex-shrink: 0;
+        /* width inyectada por JS */
+        padding: 8px 4px;
     }
     .benefit-icon-wrapper {
-        width: 50px;
-        height: 50px;
-        font-size: 1.1rem;
+        width: 46px;
+        height: 46px;
+        font-size: 1rem;
     }
     .benefit-label {
-        font-size: 0.58rem;
+        font-size: 0.54rem;
+        max-width: 80px;
+        letter-spacing: 0.8px;
     }
 }
 
@@ -957,9 +977,15 @@ textarea.form-control {
     .product-panel-content {
         width: 100%;
     }
+    .product-tabs {
+        flex-wrap: nowrap;
+    }
     .product-tab-btn {
-        padding: 10px 16px;
-        font-size: 0.82rem;
+        flex: 1;
+        padding: 10px 6px;
+        font-size: 0.75rem;
+        text-align: center;
+        white-space: nowrap;
     }
 }
 

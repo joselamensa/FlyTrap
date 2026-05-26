@@ -106,12 +106,63 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
+    // Carrusel de íconos en mobile
+    setupBenefitsCarousel();
+
     // Tabs de productos
     setupProductTabs();
 
     // Configurar funcionalidad de expandir/contraer texto en mobile
     setupExpandableText();
 });
+
+function setupBenefitsCarousel() {
+    if (window.innerWidth > 767) return;
+
+    const row = document.querySelector(".benefits-row");
+    if (!row) return;
+
+    const VISIBLE = 3;
+    const origItems = [...row.querySelectorAll(".benefit-item")];
+    const n = origItems.length; // 5
+
+    // Clonar los primeros VISIBLE ítems para el loop infinito
+    origItems.slice(0, VISIBLE).forEach(item => {
+        const clone = item.cloneNode(true);
+        clone.setAttribute("aria-hidden", "true");
+        row.appendChild(clone);
+    });
+
+    // Ancho de cada ítem = ancho visible / 3
+    const containerW = row.parentElement.offsetWidth;
+    const itemW = containerW / VISIBLE;
+
+    [...row.querySelectorAll(".benefit-item")].forEach(item => {
+        item.style.width = itemW + "px";
+        item.style.minWidth = itemW + "px";
+    });
+
+    let pos = 0;
+
+    // Posicionar sin animación al inicio
+    row.style.transition = "none";
+    row.style.transform = "translateX(0)";
+
+    setInterval(() => {
+        pos++;
+        row.style.transition = "transform 0.42s cubic-bezier(0.4, 0, 0.2, 1)";
+        row.style.transform = `translateX(${-pos * itemW}px)`;
+
+        // Cuando llegamos a los clones, reseteamos silenciosamente
+        if (pos >= n) {
+            setTimeout(() => {
+                row.style.transition = "none";
+                row.style.transform = "translateX(0)";
+                pos = 0;
+            }, 450);
+        }
+    }, 2200);
+}
 
 function setupHeroSlider() {
     const dotsContainer = document.getElementById("heroDots");
